@@ -1,0 +1,250 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Squat Exercise - HealthNOW</title>
+    <link rel="icon" href="images/webcam.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"
+            type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.2.3/dist/ml5.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/squat_video.js"></script>
+    <link rel="stylesheet" href="~/Content/assets/css/style_raise.css" />
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    <script>
+        function LoadTips() {
+            var x = document.getElementById("Tips");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function headerchange() {
+            var info = "@ViewBag.user";
+            if (info == "gg") {
+                document.getElementById("notlogin").style.display = "block";
+            } else {
+                document.getElementById("login").style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body onLoad="headerchange();">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container d-flex align-items-center justify-content-lg-between">
+            <h1 class="logo me-auto me-lg-0">@Html.ActionLink("HealthNOW", "Home", "Default")</h1>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                    <li>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                    <li>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                    <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <div id="notlogin" STYLE="display:none;"><a href="@Url.Action("Loign", "Default")" class="get-started-btn scrollto">Log In</a></div>
+
+            <div id="login" STYLE="display:none;">
+                <a href="@Url.Action("Userindex", "Default")" class="get-started-btn scrollto">Health Report</a>
+                <a href="@Url.Action("LoignOut", "Default")" class="get-started-btn scrollto">Log Out</a>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1><strong>Squat Exercise</strong></h1>
+                    <ol>
+                        <li>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                        <li>Squat Exercise</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <section id="Exercise" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div>
+                    <h2>&laquo; @Html.ActionLink("Back", "Detection", "Default")</h2>
+                    <hr>
+                </div>
+                <button style="width: 500px;" onClick="LoadTips()">Camera Not Working?</button>
+                <div id="Tips" STYLE="display:none;">
+                    <h2>Solution 1. Make sure you have allowed the permission of camera, if you have denined the permission, go to setting of your browser to allow the access of camera to the application.</h2>
+
+                    <h2>
+                        Solution 2. Make sure no any other application is not accessing camera at that time, if yes, close that application
+                    </h2>
+
+                    <h2>Solution 3. Try to close all the other opened broswers</h2>
+                </div>
+
+                <div class="top-buffer">
+
+                    <div class="rightdiv">
+
+                        <div id="video" class="video-cont">
+                            <table>
+                                <tr>
+                                    <td><h1>Count:</h1></td>
+                                    <td><h1 id="count">0</h1></td>
+                                </tr>
+                                <tr>
+                                    <td><h1>Calories:</h1></td>
+                                    <td><h1 id="calurie">0</h1></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="rightdiv">
+                        <h3 align="left" id="div-heading">Welcome to Squat Detection</h3>
+                        <hr>
+                        <p align="left" style="text-justify:inter-word;">
+
+                        </p>
+                        <h5 style="color:#FF8200;text-align: left;">Instructions to Use:</h5>
+                        <ul align="left">
+                            <li>Click the Button below to start squat count </li>
+                            <li>Stand two meters away from the camera</li>
+                            <li>Let the camera capture the whole body as much as possible</li>
+
+                            <li>Follow the demonstration to do exercise</li>
+                        </ul>
+
+                        <img src="~/Content/assets/img/squat.gif" class="img-fluid">
+                        <button onClick="start()" id="startstop">
+                            Click here to Experience
+                        </button>
+                    </div>
+                </div>
+
+                <h2 class=" text-right">@Html.ActionLink("Next Exercise", "Leg", "Default")&raquo;</h2>
+
+            </div>
+        </section><!-- End Sofa Section -->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>health now<span>.</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Home", "Home", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+    <!-- Audio Tag -->
+    <!-- Video Div -->
+    <!-- Start Stop Button -->
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Content/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/Content/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Content/assets/js/main.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            setInterval("GetCount()", 8000);
+        }
+
+        function GetCount() {
+
+            var count = document.getElementById("count").innerHTML;
+            var calurie = document.getElementById("calurie").innerHTML;
+            var infoS = "@ViewBag.user";
+            if (count>=6 && infoS !== "gg") {
+
+
+                var httpRequest = new XMLHttpRequest();//Step 1: create the required objects
+                httpRequest.open('GET', '/Default/InsSquatExercise?count=' + count + '&caluries=' + calurie, true);//Step 2: open the connection and write the request parameters in the URL  ps:"./Ptest.php?name=test&nameone=testone"
+                httpRequest.send();//Step 3: send the request and write the request parameters in the URL
+                /**
+                 * Handler after data acquisition
+                 */
+                httpRequest.onreadystatechange = function () {
+                    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                        var json = httpRequest.responseText;//The JSON string is obtained and needs to be parsed
+                        console.log(json);
+                    }
+                };
+               document.getElementById("count").innerHTML=0;
+               document.getElementById("calurie").innerHTML=0;
+            } else {
+                console.log("wAIT")
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

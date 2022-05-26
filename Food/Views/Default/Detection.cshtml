@@ -1,0 +1,198 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Start Exercising - HealthNow</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Gp - v4.7.0
+    * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <script>
+        function headerchange() {
+            var info = "@ViewBag.user";
+            if (info == "gg") {
+                document.getElementById("notlogin").style.display = "block";
+            } else {
+                document.getElementById("login").style.display = "block";
+            }
+        }
+    </script>
+</head>
+
+<body onLoad="headerchange();">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container d-flex align-items-center justify-content-lg-between">
+            <h1 class="logo me-auto me-lg-0">@Html.ActionLink("HealthNOW", "Home", "Default")</h1>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                    <li>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                    <li>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                    <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <div id="notlogin" STYLE="display:none;"><a href="@Url.Action("Loign", "Default")" class="get-started-btn scrollto">Log In</a></div>
+
+            <div id="login" STYLE="display:none;">
+                <a href="@Url.Action("Userindex", "Default")" class="get-started-btn scrollto">Health Report</a>
+                <a href="@Url.Action("LoignOut", "Default")" class="get-started-btn scrollto">Log Out</a>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1><strong>Start Exercising</strong></h1>
+                    <ol>
+                        <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                        <li>Start Exercising</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= Problem Section ======= -->
+        <section id="tutorial" class="counts">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+                    <h1>Explore Your Motion Detection Exercise</h1>
+
+                    <h2><i class="ri-check-double-line"></i>When App ask for permission of camera, allow it to access to capture pose.</h2>
+
+                    <h2>
+                        <i class="ri-check-double-line"></i>Stand two meters away from the camera
+                    </h2>
+
+                    <h2>
+                        <i class="ri-check-double-line"></i>Let the camera capture the whole body as much as possible
+                    </h2>
+
+                    <h2>
+                        <i class="ri-check-double-line"></i>Click on Start button to start capturing
+                    </h2>
+                </div>
+            </div>
+
+        </section><!-- End Problem Section -->
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <a href="@Url.Action("Squat", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-body"></i></div>
+                                <h4>Squat exercise</h4>
+                                <h3>Squat exercise at Home</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <a href="@Url.Action("Leg", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-body"></i></div>
+                                <h4>Leg exercise</h4>
+                                <h3>Leg exercise with chair</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>health now<span>.</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Home", "Home", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Content/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/Content/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Content/assets/js/main.js"></script>
+
+</body>
+
+</html>

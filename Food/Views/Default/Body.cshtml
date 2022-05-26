@@ -1,0 +1,655 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Know Ur Body - HealthNOW</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Gp - v4.7.0
+    * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <script>
+        var MySelection = {}; // Globally scoped object
+
+        function GenderButton(IdBaseName, NumberOfButtons) {
+            CheckThisButton = IdBaseName + NumberOfButtons;
+            ThisDiv = IdBaseName + NumberOfButtons + 'Div';
+            This = IdBaseName + NumberOfButtons
+            y = 3 - NumberOfButtons
+            OtherDiv = IdBaseName + y + 'Div';
+            Other = IdBaseName + y
+            document.getElementById(ThisDiv).style.display = "block";
+            document.getElementById(This).classList.add('onclick');
+            document.getElementById(OtherDiv).style.display = "none";
+            document.getElementById(Other).classList.remove('onclick');
+            MySelection.Gender = CheckThisButton;
+        }
+
+        function AgeGroupButton(IdBaseName, NumberOfButtons) {
+            for (x = 1; x <= 6; x++) {
+                This = IdBaseName + x;
+                if (x == NumberOfButtons) {
+                    MySelection.AgeGroup = This
+                    document.getElementById(This).classList.add('onclick');
+                }
+                else {
+                    document.getElementById(This).classList.remove('onclick');
+                }
+            }
+        }
+
+        function LifestyleButton(IdBaseName, NumberOfButtons) {
+            if (MySelection.Lifestyle) {
+                LastDiv = MySelection.Gender + MySelection.AgeGroup + MySelection.Lifestyle + 'Div';
+                document.getElementById(LastDiv).style.display = "none";
+            }
+            for (x = 1; x <= 3; x++) {
+                This = IdBaseName + x;
+                if (x == NumberOfButtons) {
+                    MySelection.Lifestyle = This
+                    document.getElementById(This).classList.add('onclick');
+                }
+                else {
+                    document.getElementById(This).classList.remove('onclick');
+                }
+            }
+            ThisDiv = MySelection.Gender + MySelection.AgeGroup + MySelection.Lifestyle + 'Div';
+            MySelection.calorie = MySelection.Gender + MySelection.AgeGroup + MySelection.Lifestyle;
+            document.getElementById(ThisDiv).style.display = "block";
+        }
+
+        function BodyTypeButton(IdBaseName, NumberOfButtons) {
+            for (x = 1; x <= 5; x++) {
+                This = IdBaseName + x;
+                ThisDiv = IdBaseName + x + 'Div';
+                if (x == NumberOfButtons) {
+                    document.getElementById(ThisDiv).style.display = "block";
+                    document.getElementById(This).classList.add('onclick');
+                    MySelection.Bodytype = This
+                }
+                else {
+                    document.getElementById(ThisDiv).style.display = "none";
+                    document.getElementById(This).classList.remove('onclick');
+                }
+            }
+            return false;
+        }
+
+         function headerchange() {
+            var info = "@ViewBag.user";
+            if (info == "gg") {
+                document.getElementById("notlogin").style.display = "block";
+            } else {
+                document.getElementById("login").style.display = "block";
+                document.getElementById("saveButton").style.display = "block";
+            }
+        }
+
+    </script>
+</head>
+
+<body onLoad="headerchange();">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container d-flex align-items-center justify-content-lg-between">
+            <h1 class="logo me-auto me-lg-0">@Html.ActionLink("HealthNOW", "Home", "Default")</h1>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                    <li>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                    <li>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                    <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <div id="notlogin" STYLE="display:none;"><a href="@Url.Action("Loign", "Default")" class="get-started-btn scrollto">Log In</a></div>
+
+            <div id="login" STYLE="display:none;">
+                <a href="@Url.Action("Userindex", "Default")" class="get-started-btn scrollto">Health Report</a>
+                <a href="@Url.Action("LoignOut", "Default")" class="get-started-btn scrollto">Log Out</a>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1><strong>Know Ur Body</strong></h1>
+                    <ol>
+                        <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        <li>Know Ur Body</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row" data-aos="zoom-in" data-aos-delay="250">
+                    <h2>Select Healthy Lifestyle:</h2>
+                    <div class="col-xl-4 col-md-4">
+                        <a href="@Url.Action("Body", "Default")">
+                            <div class="icon-box onclick">
+                                <div class="icon"><i class="bx bx-body"></i></div>
+                                <h4>Know Your Body</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-4 col-md-4">
+                        <a href="@Url.Action("Index", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-food-menu"></i></div>
+                                <h4>Know Your Diet</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-4 col-md-4">
+                        <a href="@Url.Action("Posture", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-reset"></i></div>
+                                <h4>Posture Detection</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- End Selection Section -->
+
+
+        <div id="stepProgressBar">
+            <div class="step">
+                <div class="bullet list completed"><h3>1</h3></div>
+                <h3 class="step-text">Gender</h3>
+            </div>
+            <div class="step">
+                <div class="bullet list"><h3>2</h3></div>
+                <h3 class="step-text">Age group</h3>
+            </div>
+            <div class="step">
+                <div class="bullet list"><h3>3</h3></div>
+                <h3 class="step-text">Lifestyle</h3>
+            </div>
+            <div class="step">
+                <div class="bullet list"><h3>4</h3></div>
+                <h3 class="step-text">Body type</h3>
+            </div>
+            <div class="step">
+                <div class="bullet"><h3>5</h3></div>
+                <h3 class="step-text">Result</h3>
+            </div>
+        </div>
+        <!-- ======= Selection Section ======= -->
+        <div class="container" data-aos="fade-up">
+            <section id="Selection" class="services">
+
+                <div id="step1" STYLE="display:block;" class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+                    <h2>Step 1 Select Gender of You:</h2>
+                    <FORM class="row">
+                        <div class="col-xl-6 col-md-6">
+                            <div onclick="GenderButton('Gender', 1)">
+                                <div id="Gender1" class="icon-box">
+                                    <img src="~/Content/assets/img/agem2.jpg" alt="" class="img-fluid" width="200" height="300">
+                                    <h3>Male</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6">
+                            <div onclick="GenderButton('Gender', 2)">
+                                <div id="Gender2" class="icon-box">
+                                    <img src="~/Content/assets/img/agef2.jpg" alt="" class="img-fluid" width="200" height="300">
+                                    <h3>Female</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </FORM>
+                </div>
+
+                <div class="row" ID="step2" STYLE="display:none;">
+                    <div class="row" ID="Gender1Div" STYLE="display:block;">
+                        <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+                            <h2>Step 2 Select Age Group of You:</h2>
+                            <FORM class="row">
+                                <div class="col-xl-4 col-md-4">
+                                    <div onclick="AgeGroupButton('AgeGroup', 1)">
+                                        <div id="AgeGroup1" class="icon-box">
+                                            <img src="~/Content/assets/img/agem1.jpg" alt="" class="img-fluid" width="200" height="300">
+                                            <h3>19-30</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-4">
+                                    <div onclick="AgeGroupButton('AgeGroup', 2)">
+                                        <div id="AgeGroup2" class="icon-box">
+                                            <img src="~/Content/assets/img/agem2.jpg" alt="" class="img-fluid" width="200" height="300">
+                                            <h3>31-50</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-4">
+                                    <div onclick="AgeGroupButton('AgeGroup', 3)">
+                                        <div id="AgeGroup3" class="icon-box">
+                                            <img src="~/Content/assets/img/agem3.jpg" alt="" class="img-fluid" width="200" height="300">
+                                            <h3>51+</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </FORM>
+                        </div>
+                    </div>
+
+                    <div class="row" ID="Gender2Div" STYLE="display:none;">
+                        <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+                            <h2>Step 2 Select Age Group of You:</h2>
+                            <FORM class="row">
+                                <div class="col-xl-4 col-md-4">
+                                    <div onclick="AgeGroupButton('AgeGroup', 4)">
+                                        <div id="AgeGroup4" class="icon-box">
+                                            <img src="~/Content/assets/img/agef1.jpg" alt="" class="img-fluid" width="200" height="300">
+                                            <h3>19-30</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-4">
+                                    <div onclick="AgeGroupButton('AgeGroup', 5)">
+                                        <div id="AgeGroup5" class="icon-box">
+                                            <img src="~/Content/assets/img/agef2.jpg" alt="" class="img-fluid" width="200" height="300">
+                                            <h3>31-50</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-4">
+                                    <div onclick="AgeGroupButton('AgeGroup', 6)">
+                                        <div id="AgeGroup6" class="icon-box">
+                                            <img src="~/Content/assets/img/agef3.jpg" alt="" class="img-fluid" width="200" height="300">
+                                            <h3>51+</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </FORM>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="step3" STYLE="display:none;">
+                    <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+                        <h2>Step 3 Select Lifestyle of You:</h2>
+                        <FORM class="row">
+                            <div class="col-xl-4 col-md-4">
+                                <div onclick="LifestyleButton('Lifestyle', 1)">
+                                    <div id="Lifestyle1" class="icon-box">
+                                        <img src="~/Content/assets/img/1.png" alt="" class="img-fluid" width="200" height="200">
+                                        <h3>Sedentary</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-4">
+                                <div onclick="LifestyleButton('Lifestyle', 2)">
+                                    <div id="Lifestyle2" class="icon-box">
+                                        <img src="~/Content/assets/img/2.jpg" alt="" class="img-fluid" width="200" height="200">
+                                        <h3>Moderately Active</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-4">
+                                <div onclick="LifestyleButton('Lifestyle', 3)">
+                                    <div id="Lifestyle3" class="icon-box">
+                                        <img src="~/Content/assets/img/3.jpg" alt="" class="img-fluid" width="200" height="200">
+                                        <h3>Active</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </FORM>
+                    </div>
+                </div>
+
+                <div id="step4" STYLE="display:none;" class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+                    <h2>Step 4 Select Body Type:</h2>
+
+                    <FORM class="row">
+                        <div class="col-xl-4 col-md-4">
+                            <div onclick="BodyTypeButton('GroupName', 1)">
+                                <div id="GroupName1" class="icon-box">
+                                    <img src="~/Content/assets/img/body1.jpg" alt="" class="img-fluid" width="150" height="300">
+                                    <h3>Underweight</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-4">
+                            <div onclick="BodyTypeButton('GroupName', 2)">
+                                <div id="GroupName2" class="icon-box">
+                                    <img src="~/Content/assets/img/body2.jpg" alt="" class="img-fluid" width="150" height="300">
+                                    <h3>Healthy weight</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-4">
+                            <div onclick="BodyTypeButton('GroupName', 3)">
+                                <div id="GroupName3" class="icon-box">
+                                    <img src="~/Content/assets/img/body3.jpg" alt="" class="img-fluid" width="150" height="300">
+                                    <h3>Overweight but not obese</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-4">
+                            <div onclick="BodyTypeButton('GroupName', 4)">
+                                <div id="GroupName4" class="icon-box">
+                                    <img src="~/Content/assets/img/body4.jpg" alt="" class="img-fluid" width="150" height="300">
+                                    <h3>Obese class I</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-4">
+                            <div onclick="BodyTypeButton('GroupName', 5)">
+                                <div id="GroupName5" class="icon-box">
+                                    <img src="~/Content/assets/img/body5.jpg" alt="" class="img-fluid" width="150" height="300">
+                                    <h3>Obese class II or III</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </FORM>
+                </div>
+
+                <div class="row" id="step5" STYLE="display:none;">
+
+                    <h2>Step 5 Suggestion Result:</h2>
+                    <br />
+
+                    <h3>How Many Calories Do You Really Need?</h3>
+
+                    <DIV ID="Gender1AgeGroup1Lifestyle1Div" STYLE="display:none;">
+                        <h3><strong id="Gender1AgeGroup1Lifestyle1">2400-2600</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender1AgeGroup2Lifestyle1Div" STYLE="display:none;">
+                        <h3><strong ID="Gender1AgeGroup2Lifestyle1">2200-2400</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender1AgeGroup3Lifestyle1Div" STYLE="display:none;">
+                        <h3><strong ID="Gender1AgeGroup3Lifestyle1">2000-2200</strong> calories each day</h3>
+                    </DIV>
+
+
+                    <DIV ID="Gender1AgeGroup1Lifestyle2Div" STYLE="display:none;">
+                        <h3><strong ID="Gender1AgeGroup1Lifestyle2">2600-2800</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender1AgeGroup2Lifestyle2Div" STYLE="display:none;">
+                        <h3><strong ID="Gender1AgeGroup2Lifestyle2">2400-2600</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender1AgeGroup3Lifestyle2Div" STYLE="display:none;">
+                        <h3><strong ID="Gender1AgeGroup3Lifestyle2">2200-2400</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender1AgeGroup1Lifestyle3Div" STYLE="display:none;">
+                        <h3><strong ID="Gender1AgeGroup1Lifestyle3">3000</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender1AgeGroup2Lifestyle3Div" STYLE="display:none;">
+                        <h3><strong ID="Gender1AgeGroup2Lifestyle3">2800-3000</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender1AgeGroup3Lifestyle3Div" STYLE="display:none;">
+                        <h3><strong ID="Gender1AgeGroup3Lifestyle3">2400-2800</strong> calories each day</h3>
+                    </DIV>
+
+
+                    <DIV ID="Gender2AgeGroup4Lifestyle1Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup4Lifestyle1">1800-2000</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender2AgeGroup5Lifestyle1Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup5Lifestyle1">1800</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender2AgeGroup6Lifestyle1Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup6Lifestyle1">1600</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender2AgeGroup4Lifestyle2Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup4Lifestyle2">2000-2200</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender2AgeGroup5Lifestyle2Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup5Lifestyle2">2000</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender2AgeGroup6Lifestyle2Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup6Lifestyle2">1800</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender2AgeGroup4Lifestyle3Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup4Lifestyle3">2400</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender2AgeGroup5Lifestyle3Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup5Lifestyle3">2200</strong> calories each day</h3>
+                    </DIV>
+
+                    <DIV ID="Gender2AgeGroup6Lifestyle3Div" STYLE="display:none;">
+                        <h3><strong ID="Gender2AgeGroup6Lifestyle3">2000-2200</strong> calories each day</h3>
+                    </DIV>
+
+                    <br />
+                    <h3>Suggestion for your daily diet and exercise:</h3>
+
+                    <DIV ID="GroupName1Div" STYLE="display:none;">
+                        <h4><strong>You're underweight, eat more frequently.</strong> Having five to six smaller meals during the day rather than two or three large meals. </h4>
+                        <h4><strong>Choose nutrient-rich foods.</strong> As part of an overall healthy diet, choose whole-grain breads, pastas and cereals; fruits and vegetables; dairy products; lean protein sources; and nuts and seeds. </h4>
+                        <h4><strong>Make every bite count.</strong> Snack on nuts, peanut butter, cheese, dried fruits and avocados. Have a bedtime snack, such as a peanut butter and jelly sandwich, or a wrap sandwich with avocado, sliced vegetables, and lean meat or cheese. </h4>
+                        <h4><strong>Exercise much more, especially strength training. </strong> Help you gain weight by building up your muscles, which may also stimulate your appetite.</h4>
+                    </DIV>
+                    <DIV ID="GroupName2Div" STYLE="display:none;">
+                        <h4><strong>Eat responsibly and mindfully.</strong> Pay attention to portion sizes and avoid overeating. Using smaller plates and bowls may help you choose smaller portions at meals. Prioritize meal time. Eat slowly, with focus on your meal. Listen to your body's physical cues to stop eating before you feel full. On special occasions, choose your foods wisely.</h4>
+                        <h4><strong>Plan your meals ahead of time.</strong></h4>
+
+                        <h4><strong>A diet is not a long-term method or tool to lose weight.</strong> Rethink your old ways of eating and identify habits that caused you to gain weight. For example, stop overeating at night.</h4>
+                        <h4><strong>Make gradual turns.</strong> Plan one change at a time that can be incorporated into your new lifestyle. Take one step at a time, and you will be headed for success.</h4>
+                        <h4><strong>Make an appointment with a registered dietitian (RD).</strong> Don’t hesitate to make an appointment with a registered dietitian if you need. He or she can provide helpful tips and point you in the right direction for a healthy lifestyle change.</h4>
+                    </DIV>
+
+                    <DIV ID="GroupName3Div" STYLE="display:none;">
+                        <h4><strong>Consume less processed and sugary foods.</strong></h4>
+
+                        <h4><strong>Eat more servings of vegetables and fruits.</strong> It can lower blood pressure, reduce the risk of heart disease and stroke, prevent some types of cancer, lower risk of eye and digestive problems, and have a positive effect upon blood sugar. </h4>
+
+                        <h4><strong>Eat more dietary fiber </strong> such as beans, broccoli, avocado.</h4>
+
+                        <h4><strong>Engage in regular aerobic activity.</strong> It will increased stamina and reduced fatigue. You can also gain increased heart and lung fitness and bone and muscle strength over time.</h4>
+
+                        <h4><strong>Incorporate a weight training regime.</strong></h4>
+
+                        <h4><strong>Reducing daily stress </strong> You can find your way to let you relaxed.</h4>
+                    </DIV>
+
+                    <DIV ID="GroupName4Div" STYLE="display:none;">
+                        <h4><strong>Keep a food diary </strong> including what you ate, where you ate, and how you were feeling before and after you ate.</h4>
+
+                        <h4><strong>Eat more servings of vegetables and fruits.</strong> It can lower blood pressure, reduce the risk of heart disease and stroke, prevent some types of cancer, lower risk of eye and digestive problems, and have a positive effect upon blood sugar. </h4>
+
+                        <h4><strong>Choose whole grain foods,</strong> such as brown rice and whole wheat bread. Don't eat highly processed foods made with refined white sugar, flour, high-fructose corn syrup and saturated fat.</h4>
+
+                        <h4><strong>Simply reducing portion sizes and using a smaller plate can help you lose weight.</strong></h4>
+
+                        <h4><strong>Incorporate physical activity.</strong> Aim for an average of 60 to 90 minutes or more of moderate to intense physical activity 3 to 4 days each week, for example, running or playing singles tennis.</h4>
+
+                        <h4><strong>Incorporate daily activity. </strong> Look for ways to get even 10 or 15 minutes of some type of activity during the day. Walking around the block or up and down a few flights of stairs is a good start.</h4>
+                    </DIV>
+
+                    <DIV ID="GroupName5Div" STYLE="display:none;">
+                        <h4><strong>Seeking help from a doctor.</strong> Taking your health history and seeking help from a doctor. </h4>
+                        <h4><strong>Do a general physical exam,</strong> including measuring your height, checking vital signs, such as heart rate, blood pressure and temperature, listening to your heart and lungs, and examining your abdomen.</h4>
+                        <h4><strong>Periodic inspection.</strong> Measuring your waist circumference. Fat stored around the waist may further increase the risk of heart disease and diabetes. Women with a waist measurement (circumference) of more than 35 inches (89 centimeters) and men with a waist measurement of more than 40 inches (102 centimeters) may have more health risks than people with smaller waist measurements.</h4>
+                        <h4><strong>Checking for other health problems</strong> like high blood pressure, high cholesterol, underactive thyroid, liver problems and diabetes. If you have known health problems, your doctor will evaluate them.</h4>
+                    </DIV>
+
+                    <button onclick="updatebody()" id="saveButton" STYLE="display:none;">Save Body Info</button>
+
+                </div>
+            </section><!-- End Selection Section -->
+
+            <div class="text-center justify-content-center">
+                <button style="width: 300px;" id="previousBtn" type="button" disabled>Previous Step</button>
+                <button style="width: 300px;" id="nextBtn">Next Step</button>
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>health now<span>.</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Home", "Home", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Content/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/Content/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/php-email-form/validate.js"></script>
+
+    <script src="~/Content/assets/js/main.js"></script>
+    <script src="~/Content/assets/js/script.js"></script>
+    <script type="text/javascript">
+        var count = 0;
+        function updatebody() {
+
+            //var stp1 = document.getElementById("step1").innerHTML;
+            //console.log(stp1)
+            //var stp2 = document.getElementById("step2").innerHTML;
+            //console.log(stp2)
+            //var stp3 = document.getElementById("step3").innerHTML;
+            //console.log(stp3)
+            //var stp4 = document.getElementById("step4").innerHTML;
+            //console.log(stp4)
+            var info1 = "@ViewBag.user";
+            if (info1 == "gg") {
+
+            }
+            else
+            {
+                //count += 1;
+                //if (count == 4) {
+                    console.log(MySelection)
+                    var agegroup = document.getElementById(MySelection.AgeGroup).children[1].innerHTML;
+                    var gender = document.getElementById(MySelection.Gender).children[1].innerHTML;
+                    var lifestyle = document.getElementById(MySelection.Lifestyle).children[1].innerHTML;
+                    //var lifestyle = document.getElementById(MySelection.Lifestyle).children[1].innerHTML;
+                    //console.log(MySelection);
+                    console.log(MySelection.calorie);
+                    //var lifestyle = document.getElementById(MySelection.Lifestyle).children[1].innerHTML;
+                    var bodyType = document.getElementById(MySelection.Bodytype).children[1].innerHTML;
+                    var result = document.getElementById(MySelection.calorie).innerHTML;
+                    console.log(result);
+
+                    post("/default/InsKnowUrBody",
+                        {
+                            "gender": gender,
+                            "ageGroup": agegroup,
+                            "lifestyle": lifestyle,
+                            "bodyType": bodyType,
+                            "result": result
+                        },
+                        function () {
+                            console.log("Successful save");
+                            window.location.reload();
+                        });
+                //}
+                console.log(count);
+            }
+            function post(URL, PARAMS) {
+                var temp = document.createElement("form");
+                temp.action = URL;
+                temp.method = "post";
+                temp.style.display = "none";
+                for (var x in PARAMS) {
+                    var opt = document.createElement("textarea");
+                    opt.name = x;
+                    opt.value = PARAMS[x];
+                    // alert(opt.name)
+                    temp.appendChild(opt);
+                }
+                document.body.appendChild(temp);
+                temp.submit();
+                return temp;
+                }
+            }
+    </script>
+</body>
+
+</html>

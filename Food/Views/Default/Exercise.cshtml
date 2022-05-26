@@ -1,0 +1,454 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Exercise Guide - HealthNow</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Gp - v4.7.0
+    * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <script>
+
+        function display(id, number) {
+            document.getElementById("Intro").style.display = "none";
+            for (x = 1; x <= 3; x++) {
+                ThisDiv = id + x + "Div";
+                This = id + x;
+                if (x == number) {
+                    document.getElementById(ThisDiv).style.display = "block";
+                    document.getElementById(This).classList.add('onclick');
+                }
+                else {
+                    document.getElementById(ThisDiv).style.display = "none";
+                    document.getElementById(This).classList.remove('onclick');
+                }
+            }
+        }
+
+        function headerchange() {
+            var info = "@ViewBag.user";
+            if (info == "gg") {
+                document.getElementById("notlogin").style.display = "block";
+            } else {
+                document.getElementById("login").style.display = "block";
+            }
+        }
+    </script>
+
+</head>
+
+<body onLoad="headerchange();">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container d-flex align-items-center justify-content-lg-between">
+            <h1 class="logo me-auto me-lg-0">@Html.ActionLink("HealthNOW", "Home", "Default")</h1>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                    <li>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                    <li>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                    <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <div id="notlogin" STYLE="display:none;"><a href="@Url.Action("Loign", "Default")" class="get-started-btn scrollto">Log In</a></div>
+
+            <div id="login" STYLE="display:none;">
+                <a href="@Url.Action("Userindex", "Default")" class="get-started-btn scrollto">Health Report</a>
+                <a href="@Url.Action("LoignOut", "Default")" class="get-started-btn scrollto">Log Out</a>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1><strong>Exercise Guide</strong></h1>
+                    <ol>
+                        <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                        <li>Exercise Guide</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+                <h2 id="Intro">
+                    We offer you some physical exercise plans based on your environment and the tools you have.
+                </h2>
+
+                <div class="row" data-aos="zoom-in" data-aos-delay="250">
+                    <h2>Select Furniture:</h2>
+                    <div class="col-xl-4 col-md-4">
+                        <div onclick="display('Furniture', 1)">
+                            <div id="Furniture1" class="icon-box">
+                                <img src="~/Content/assets/img/ironing_board.jpg" alt="" class="img-fluid" width="200" height="100">
+                                <h3>Ironing Board</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4">
+                        <div onclick="display('Furniture', 2)">
+                            <div id="Furniture2" class="icon-box">
+                                <img src="~/Content/assets/img/chair.jpg" alt="" class="img-fluid" width="133" height="100">
+                                <h3>Chair</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-4">
+                        <div onclick="display('Furniture', 3)">
+                            <div id="Furniture3" class="icon-box">
+                                <img src="~/Content/assets/img/sofa.jpg" alt="" class="img-fluid" width="200" height="100">
+                                <h3>Sofa</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- End Selection Section -->
+        <!-- ======= Ironing Board Section ======= -->
+        <section id="Furniture1Div" STYLE="display:none;" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Furnitures</h2>
+                    <p>Ironing Board</p>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/ironing_board.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Before You Start Ironing Board Exercise</h3>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i> Make sure that the ironing board you choose is sturdy and can hold your body weight. Also, be sure to check the floor for slip and avoid using a ironing board with movement. If there's slip, try sliding a yoga mat under the ironing board.
+                            </h4>
+                            <h4>
+                                <i class="ri-check-double-line"></i> If you're planning on adding ironing board exercises to your regular exercise program, make sure that the program has been approved by a doctor or a physical therapist.
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Step 1: Firstly, you need an ironing board and a belt (such as luggage belt)</h3>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/board.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <img src="~/Content/assets/img/belt.jpg" class="img-fluid" alt="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/board1.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>
+                            Step 2: Lie down on the board and make sure that your face is towards the board, and fasten
+                            yourself and the board together with the belt (avoid too tight or too loose).
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/board2.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>
+                            Step 3: Relax your body, especially back and legs, and perform the press-ups, when you feel
+                            the pressure provided by the belt.
+                        </h3>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Repeat 30 times
+                            </h4>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Timer For 2 Minute
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Ironing Board Section -->
+        <!-- ======= Chair Section ======= -->
+        <section id="Furniture2Div" STYLE="display:none;" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Furnitures</h2>
+                    <p>Chair</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/chair.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Before You Start Chair Exercise</h3>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i> Make sure that the chair you choose is sturdy and can hold your body weight. Also, be sure to check the floor for slip and avoid using a regular office chair. If there's movement, try sliding a yoga mat under the chair.
+                            </h4>
+                            <h4>
+                                <i class="ri-check-double-line"></i> If you're planning on adding chair exercises to your regular exercise program, make sure that the program has been approved by a doctor or a physical therapist.
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/chair1.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Mountain Climber</h3>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Timer For 1 Minute
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/chair2.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Triceps Dip</h3>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Countdown For 60 Reps
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/chair3.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Glute Kick Back</h3>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Countdown For 60 Reps
+                            </h4>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Switch Legs
+                            </h4>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Countdown For 60 Reps
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/chair4.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>
+                            Lateral Leg Circles
+                        </h3>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Countdown For 60 Reps
+                            </h4>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Switch Legs
+                            </h4>
+                            <h4>
+                                <i class="ri-check-double-line"></i>Countdown For 60 Reps
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Chair Section -->
+        <!-- ======= Sofa Section ======= -->
+        <section id="Furniture3Div" STYLE="display:none;" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Furnitures</h2>
+                    <p>Sofa</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/sofa.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Before You Start Sofa Exercise</h3>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i> Make sure that the sofa you choose is sturdy and can hold your body weight. Also, be sure to check the floor for slip and avoid using a regular office chair.
+                            </h4>
+                            <h4>
+                                <i class="ri-check-double-line"></i> If you're planning on adding sofa exercises to your regular exercise program, make sure that the program has been approved by a doctor or a physical therapist.
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/sofa1.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Seated Crunch</h3>
+                        <p>Sit on the edge of the sofa.</p>
+                        <p>Grip the front of the cushions with your hands.</p>
+                        <p>Lean back slightly while extending your legs. Your heels should be around six inches off the floor.</p>
+                        <p>Begin to bend your knees and raise your legs toward your chest.</p>
+                        <p>Extend your legs back out and repeat.</p>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i>3 sets of 12 reps
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/sofa2.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Leg raises</h3>
+                        <p>Lie on the sofa face up with your legs extended.</p>
+                        <p>Position your hands with your palms down.</p>
+                        <p>Raise your legs toward the ceiling. Keep them straight with your thighs pressed together. Make sure you keep your back and core tucked. Your back should not round off the couch.</p>
+                        <p>Continue raising your legs until you can't go any higher.</p>
+                        <p>Lower your legs down and repeat.</p>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i>4 sets of 10 reps
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="~/Content/assets/img/sofa3.gif" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                        <h3>Russian twists</h3>
+                        <p>Sit near the edge of the sofa.</p>
+                        <p>Extend your legs so that they are slightly bent and crossed at the ankles.</p>
+                        <p>Grab a pillow and twist your upper body from side to side. Your legs should not move. And repeat.</p>
+                        <ul>
+                            <h4>
+                                <i class="ri-check-double-line"></i>3 sets of 20 reps
+                            </h4>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Sofa Section -->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>health now<span>.</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Home", "Home", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Content/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/Content/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Content/assets/js/main.js"></script>
+
+</body>
+
+</html>

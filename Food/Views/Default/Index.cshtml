@@ -1,0 +1,340 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Know Ur Diet - HealthNow</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Gp - v4.7.0
+    * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/laydate/laydate.js"></script>
+   
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+
+        function headerchange() {
+            var info = "@ViewBag.user";
+            if (info == "gg") {
+                document.getElementById("notlogin").style.display = "block";
+            } else {
+                document.getElementById("login").style.display = "block";
+            }
+        }
+
+
+        function add() {
+            $.ajax({
+                url: "/Default/add",
+                type: "post",
+                data: {
+                    "sl": $("#sl").val(),
+                    "data": $("#data").val()
+                },
+                success: function (data) {
+                    if (data == "0") {
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+        function dataui() {
+            laydate.render({
+
+                elem: '#data'
+                ,lang :'en'
+            });
+        }
+
+    </script>
+
+
+
+</head>
+<body onLoad="headerchange();">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container d-flex align-items-center justify-content-lg-between">
+            <h1 class="logo me-auto me-lg-0">@Html.ActionLink("HealthNOW", "Home", "Default")</h1>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                    <li>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                    <li>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                    <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <div id="notlogin" STYLE="display:none;"><a href="@Url.Action("Loign", "Default")" class="get-started-btn scrollto">Log In</a></div>
+
+            <div id="login" STYLE="display:none;">
+                <a href="@Url.Action("Userindex", "Default")" class="get-started-btn scrollto">Health Report</a>
+                <a href="@Url.Action("LoignOut", "Default")" class="get-started-btn scrollto">Log Out</a>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+
+    
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1><strong>Know Ur Diet</strong></h1>
+                    <ol>
+                        <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        <li>Know Ur Diet</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row" data-aos="zoom-in" data-aos-delay="250">
+                    <h2>Select Healthy Lifestyle:</h2>
+
+                    <div class="col-xl-4 col-md-4">
+                        <a href="@Url.Action("Body", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-food-menu"></i></div>
+                                <h4>Know Ur Body</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-4 col-md-4">
+                        <a href="@Url.Action("Index", "Default")">
+                            <div class="icon-box onclick">
+                                <div class="icon"><i class="bx bx-food-menu"></i></div>
+                                <h4>Know Ur Diet</h4>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-4 col-md-4">
+                        <a href="@Url.Action("Posture", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-reset"></i></div>
+                                <h4>Posture Detection</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section><!-- End Selection Section -->
+
+       
+         
+   
+
+        <div class="container">
+            <h1>Search food: </h1>
+            <center>
+
+                <form class="form-inline" role="form" method="post" action="/Default/Index">
+
+
+
+                    <div class="form-group">
+                        <label class="sr-only" for="name"></label>
+                        <input type="text" class="form-control" id="Food" name="Food"
+                               placeholder="Please input food name">
+
+                        <button type="submit" class="btn btn-default">Submit</button>
+
+                    </div>
+
+
+                    <br />      <br />
+
+
+                </form>
+                <script>
+
+                    $("#Food").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("Getfood","Default")',
+                dataType: "json",
+                data: { search: $("#Food").val() },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        console.log(item.Food);
+                        return { label: item.Food, value: item.Food };
+
+                    }));
+                },
+                error: function (xhr, status, error) {
+                    alert("Error");
+                }
+            });
+        }
+    });
+                </script>
+                <div class="form-inline">
+                    @if (ViewBag.cli == "0")
+                    {
+                        if (ViewBag.user == "gg")
+                        {
+                            <h1>@ViewBag.Food : @ViewBag.Serving @ViewBag.Calories calorie</h1>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                <label class="sr-only" for="name">Date</label>
+                                <input type="text" class="form-control" id="data" placeholder="Select the Date" onclick="dataui()" />
+                                <label class="sr-only" for="name">Number</label>
+                                <input type="text" class="form-control" id="sl"
+                                       placeholder="Amount of Food">  *  @ViewBag.Serving * @ViewBag.Food  <button type="submit" class="btn btn-default" onclick="add()">Add</button>
+
+                                </div>
+                            }
+
+
+                        }
+
+                    @if (ViewBag.cli == "1")
+                    {
+                        <span>The food is not included in the database</span>
+                    }
+                </div>
+            </center>
+            <br>
+            @if (ViewBag.user == "gg")
+            {
+
+            }
+            else
+            {
+                <table class="table table-bordered">
+                    <caption>Adding History</caption>
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Calorie</th>
+                            <th>Date</th>
+                            <th>Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in ViewBag.FoodTable)
+                        {
+                            if (item.Fooduser == ViewBag.user)
+
+
+                            {
+
+                        <tr>
+                            <td>@item.Food  </td>
+                            <td>@item.Calores</td>
+                            <td>@String.Format("{0:yyyy-MM-dd}", item.Fooddata)</td>
+                            <td>
+                                <a href="/Default/deleteIndex/@item.ID?ID=@item.ID" onclick='return confirm("Are you sure to delete?")' class="success">Delete</a>
+
+                            </td>
+                        </tr>
+
+
+                            }
+                        }
+                        @*<tr>
+                            <td> Total calories： @ViewBag.sum</td>
+                        </tr>*@
+                    </tbody>
+                </table>
+
+            }
+
+        </div>
+    </main>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>health now<span>.</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Home", "Home", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Content/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/Content/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Content/assets/js/main.js"></script>
+</body>
+</html>

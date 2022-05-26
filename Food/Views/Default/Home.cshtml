@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Home - HealthNOW</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    <script>
+        function headerchange() {
+            var info = "@ViewBag.user";
+            if (info == "gg") {
+                document.getElementById("notlogin").style.display = "block";
+            } else {
+                document.getElementById("login").style.display = "block";
+            }
+        }
+    </script>
+
+    <!-- =======================================================
+    * Template Name: Gp - v4.7.0
+    * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body onLoad="headerchange();">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center justify-content-lg-between">
+            <p><img src="~/Content/assets/img/HealthNow-logos_white.png" alt="" class="img-fluid" width="100" height="100"></p>
+            <h1 class="logo me-auto me-lg-0">@Html.ActionLink("HealthNOW", "Home", "Default")</h1>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                    <li>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                    <li>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                    <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <div id="notlogin" STYLE="display:none;"><a href="@Url.Action("Loign", "Default")" class="get-started-btn scrollto">Log In</a></div>
+
+            <div id="login" STYLE="display:none;">
+                <a href="@Url.Action("Userindex", "Default")" class="get-started-btn scrollto">Health Report</a>
+                <a href="@Url.Action("LoignOut", "Default")" class="get-started-btn scrollto">Log Out</a>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center justify-content-center">
+        <div class="container" data-aos="fade-up">
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="~/Content/assets/img/homepagehero.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+
+                    <h1>The Value of HealthNow</h1>
+                    <h2>FOR THE HEALTH EQUITY IN RURAL AREA</h2>
+                    <h2>Providing solutions for current health inequality issues in Australia rural areas. </h2>
+
+                    <div class="row gy-6 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+                        <div class="col-xl-6 col-md-6">
+                            <a href="@Url.Action("Detection", "Default")">
+                                <div class="icon-box">
+                                    <i class="bx bx-body"></i>
+                                    <h3>Start Exercising</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3><a class="scrollto" href="#main">&#8964;<br />Start Journey</a></h3>
+            </div>
+
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <p>Explore all things Healthy</p>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                        <a href="@Url.Action("Detection", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-body"></i></div>
+                                <h4>Start Exercising</h4>
+                                <h3>Start doing exercise with supervising through the camera detection. </h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 " data-aos="zoom-in" data-aos-delay="200">
+                        <a href="@Url.Action("Exercise", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                                <h4>Exercise Guide</h4>
+                                <h3>
+                                    We offer you some physical exercise plans based on your environment and the tools you have.
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                        <a href="@Url.Action("Lifestyle", "Default")">
+                            <div class="icon-box">
+                                <div class="icon"><i class="bx bx-food-menu"></i></div>
+                                <h4>Healthy Lifestyle</h4>
+                                <h3>We provide some convenient ways in different aspects(body, diet and movement) to guarantee your healthy lifestyle.</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+        <!-- ======= Problem Section ======= -->
+        <section id="problem" class="counts">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Problem Statement</h2>
+                    <p>Why are we doing this?</p>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6 member-img">
+                        <img src="~/Content/assets/img/rural_area.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 col-md-6 " data-aos="fade-right" data-aos-delay="100">
+                        <h2 class="fst-italic" align="justify">
+                            30% of Australians living in rural and remote areas are not physically active enough to promote good health.
+                            Obesity and inactivity are the most important risk factors for non-fatal diseases.
+                        </h2>
+                        <h2>
+                            AND WE WANT TO HELP!
+                        </h2>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Problem Section -->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>health now<span>.</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Home", "Home", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Content/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/Content/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Content/assets/js/main.js"></script>
+
+</body>
+
+</html>

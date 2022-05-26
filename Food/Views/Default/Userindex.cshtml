@@ -1,0 +1,452 @@
+﻿@model List<FoodTable>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Health Report - HealthNow</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
+
+
+    <!-- Date script src -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Gp - v4.7.0
+    * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/laydate/laydate.js"></script>
+    <script src="~/Content/datetimepicker-master/build/"></script>
+    
+    <link rel="stylesheet" type="text/css" href="~/Content/datetimepicker-master/build/jquery.datetimepicker.min.css" />
+
+    <script>
+        function addDate() {
+            $.ajax({
+                url: "/Default/addDate",
+                type: "post",
+                data: {
+
+                    "data": $("#data").val()
+                },
+                success: function (data) {
+                    if (data == "0") {
+                        window.location.reload();
+                    }
+                }
+            });
+        }
+        function dataui() {
+            laydate.render({
+                value: '2022-05-23'
+                ,elem: '#data'
+                , lang: 'en'
+
+            });
+        }
+
+        function headerchange() {
+            var info = "@ViewBag.user";
+            if (info == "gg") {
+                document.getElementById("notlogin").style.display = "block";
+            } else {
+                document.getElementById("login").style.display = "block";
+            }
+        }
+    </script>
+    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body onLoad="headerchange();">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top header-inner-pages">
+        <div class="container d-flex align-items-center justify-content-lg-between">
+            <h1 class="logo me-auto me-lg-0">@Html.ActionLink("HealthNOW", "Home", "Default")</h1>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                    <li>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                    <li>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                    <li>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <div id="notlogin" STYLE="display:none;"><a href="@Url.Action("Loign", "Default")" class="get-started-btn scrollto">Log In</a></div>
+
+            <div id="login" STYLE="display:none;">
+                <a href="@Url.Action("Userindex", "Default")" class="get-started-btn scrollto">Health Report</a>
+                <a href="@Url.Action("LoignOut", "Default")" class="get-started-btn scrollto">Log Out</a>
+            </div>
+
+        </div>
+    </header><!-- End Header -->
+
+
+
+
+
+
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1><strong>Health Report</strong></h1>
+                    <ol>
+                        <li>@Html.ActionLink("Home", "Home", "Default")</li>
+                        <li>Health Report</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+
+
+        @*<div class="containerc">
+            <div class="boxc">
+                <div class="chartc" data-percent="90">90%<canvas height="160" width="160"></canvas></div>
+                <h2>HTML</h2>
+            </div>
+            <div class="boxc">
+                <div class="chartc" data-percent="72">72%<canvas height="160" width="160"></canvas></div>
+                <h2>CSS</h2>
+            </div>
+            <div class="boxc">
+                <div class="chartc" data-percent="81">81%<canvas height="160" width="160"></canvas></div>
+                <h2>JAVASCRIPT</h2>
+            </div>
+
+        </div>*@
+
+
+        @*<div class="form-group">
+            <label class="sr-only" for="name">Date</label>
+            <input type="text" class="form-control" id="data" placeholder="Select the Date" onclick="dataui()" />
+
+
+
+        </div>*@
+       
+        <div style="display:flex;justify-content:center;align-items:center;">Date:<input id="datetimepicker" type="text"><button type="button" class="btn btn-link" onclick="searchDate()">Confirm</button></div>
+
+        <section id="services" class="services">
+            <div class="container">
+
+                <div>
+                    <h1>Hello: @ViewBag.user</h1>
+                    <h1>Calorie Intake Process</h1>
+
+                    <div class="progress1">
+                        <div class="progress__fill"></div>
+                        <span class="progress__text"> 0 %</span>
+                    </div>
+                    
+                    <script>
+
+                    function updateProgressBar(progressBar, value) {
+                    value = Math.round(value);
+                    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+                    progressBar.querySelector(".progress__text").textContent = `${value}%`;
+                    }
+
+                    const myProgressBar = document.querySelector(".progress1");
+                    updateProgressBar(myProgressBar, @ViewBag.process);
+
+
+                    </script>
+                    <h2>Know Ur Body Table:</h2>
+
+                    <table class="table table-bordered">
+                        <caption></caption>
+                        <thead>
+                            <tr>
+                                <th>Gender</th>
+                                <th>AgeGroup</th>
+                                <th>Lifestyle</th>
+                                <th>BodyType</th>
+                                <th>Calories Intake Suggestion</th>
+                                <th>Operation</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.KnowUrBody)
+                            {
+                                <tr>
+                                    <td>@item.Gender  </td>
+                                    <td>@item.AgeGroup</td>
+                                    <td>@item.Lifestyle</td>
+                                    <td>@item.BodyType </td>
+                                    <td> @item.Result  </td>
+                                    <td>
+                                        <a href="/Default/deleteBody/@item.Id?ID=@item.Id" onclick='return confirm("Are you sure to delete?")' class="success">Delete</a>
+
+                                    </td>
+
+
+                                </tr>
+
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h2>Diet Calorie Table:</h2>
+
+                    <table class="table table-bordered">
+                        <caption></caption>
+                        <thead>
+                            <tr>
+                                <th>Food</th>
+                                <th>Calories</th>
+                                <th>Date</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Food  </td>
+                                        <td>@item.Calores</td>
+                                        <td>@String.Format("{0:yyyy-MM-dd}", item.Fooddata)</td>
+                                        <td>
+                                            <a href="/Default/delete/@item.ID?ID=@item.ID" onclick='return confirm("Are you sure to delete?")' class="success">Delete</a>
+
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            }
+                            <tr>
+                                <td> Total calories： @ViewBag.sumFood </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                    <!-- Add button here -->
+                </div>
+                <div>
+
+                    <h2>Squat Exercise Table:</h2>
+
+                    <table class="table table-bordered">
+                        <caption></caption>
+                        <thead>
+                            <tr>
+                                <th>Count</th>
+                                <th>Calories</th>
+                                <th>CreateTime</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.SquatExercise)
+                            {
+                                <tr>
+                                    <td>@item.Count  </td>
+                                    <td>@item.Caluries</td>
+                                    <td>@item.CreateTime</td>
+                                    <td>
+                                        <a href="/Default/deleteSquat/@item.Id?ID=@item.Id" onclick='return confirm("Are you sure to delete?")' class="success">Delete</a>
+
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td> Total calories： @ViewBag.sumSquat </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Add button here -->
+                </div>
+                <div>
+                    <h2>Leg Exercise Table:</h2>
+
+                    <table class="table table-bordered">
+                        <caption></caption>
+                        <thead>
+                            <tr>
+                                <th>Points</th>
+                                <th>Calories</th>
+                                <th>CreateTime</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.LegExercise)
+                            {
+                                <tr>
+                                    <td>@item.Points  </td>
+                                    <td>@item.Caluries</td>
+                                    <td>@item.CreateTime</td>
+                                    <td>
+                                        <a href="/Default/deleteLeg/@item.Id?ID=@item.Id" onclick='return confirm("Are you sure to delete?")' class="success">Delete</a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <!-- Add button here -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-info">
+                            <h3>health now<span>.</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Home", "Home", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Start Exercising", "Detection", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Exercise Guide", "Exercise", "Default")</li>
+                            <li><i class="bx bx-chevron-right"></i>@Html.ActionLink("Healthy Lifestyle", "Lifestyle", "Default")</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Content/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/Content/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Content/assets/js/main.js"></script>
+    <script>
+
+
+                    function updateProgressBar(progressBar, value) {
+                    value = Math.round(value);
+                    progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+                    progressBar.querySelector(".progress__text").textContent = `${value}%`;
+                    }
+
+                    const myProgressBar = document.querySelector(".progress1");
+                    updateProgressBar(myProgressBar, @ViewBag.process);
+
+
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('.chartc').easyPieChart({
+                size: 160,
+                barColor: "#36e617",
+                scaleLength: 0,
+                lineWidth: 15,
+                trackColor: "#525151",
+                lineCap: "circle",
+                animate: 2000,
+            });
+        });
+    </script>
+    <script src="~/Content/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
+    <script>
+        var myDate = ''
+        $('#datetimepicker').datetimepicker({
+            timepicker: false,
+            
+            format: 'Y-m-d',
+            value: myDate
+        });
+        $.datetimepicker.setLocale('en');
+        function searchDate() {
+            var date = document.getElementById("datetimepicker").value;
+            console.log(date);
+            window.location.href="/default/userindex?date=" + date;
+        }
+        window.onload = function () {
+            console.log(getQueryString('date'));
+            myDate = getQueryString('date')
+            document.getElementById("datetimepicker").value = myDate
+        }
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+       
+    </script>
+    
+</body>
+</html>
+
