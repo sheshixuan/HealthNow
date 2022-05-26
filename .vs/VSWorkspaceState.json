@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Food",
+    "\\Food\\Food",
+    "\\Food\\Food\\Content",
+    "\\Food\\Food\\Content\\assets",
+    "\\Food\\Food\\Content\\assets\\css",
+    "\\Food\\Food\\Content\\assets\\img",
+    "\\Food\\Food\\Views",
+    "\\Food\\Food\\Views\\Default"
+  ],
+  "SelectedNode": "\\Food\\Food\\Views\\Default\\Home.cshtml",
+  "PreviewInSolutionExplorer": false
+}
