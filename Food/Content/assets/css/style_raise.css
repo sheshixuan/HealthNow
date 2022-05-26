@@ -1,0 +1,246 @@
+
+body {
+background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ /*font-family: 'Product Sans',sans-serif;*/
+ font-family: 'PT Sans', sans-serif;
+}
+
+
+.top-buffer {
+  
+  padding: 1%;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.leftdiv {
+   
+   margin: 1%;
+   border: 5px solid orange;
+}
+
+.rightdiv {
+    border: 5px solid orange;
+    width: 80%;
+    margin: 1%;
+    padding: 2%;
+}
+
+#vl {
+  border-left: 5px solid orange;
+  height: 90px;
+}
+
+#hl {
+  display: none;
+  
+}
+
+#info {
+  
+  font-size: 18px;
+  width: 100%;
+}
+
+
+
+/*.head {
+  direction: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  
+}
+
+.leftdiv {
+  padding: 1%;
+  width: 40%;
+
+}
+.rightdiv {
+  padding: 1%;
+  width: 40%;
+}*/
+
+footer {
+  padding: 2%;
+  text-align: center;
+}
+
+button {
+  appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  padding: 10px 15px;
+  color: #FF8200;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25s;
+}
+button:hover {
+  background-color: rgb(245, 247, 249);
+}
+
+
+
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 5%;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.total {
+  text-align: center;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-github {
+  background: #000;
+  color: white;
+  margin: 1%;
+}
+
+/* Twitter */
+.fa-linkedin {
+  background: #0073AF;
+  color: white;
+  margin: 1%;
+}
+
+#head {
+  display: inline-block;
+  text-align: center;
+}
+
+/*Phone View */
+@media (min-device-width: 320px ) and (max-device-width: 480px) {
+
+  body {
+    background-color: #fff;
+    background: #fff;
+  }
+  #vl {
+    display: none;
+  }
+
+  #dev {
+    
+    font-size: 18px;
+  }
+
+  .total {
+    text-align: center;
+    margin-top: -25px;
+  }
+
+  .tfimage {
+    width: 120px;
+    height: 20px;
+    margin-left: -45px;
+  }
+
+  #head {
+    
+    font-size: 28px;
+    text-align: center;
+    display: inline-block;
+  }
+  #dev-summary {
+     
+    margin-top: -10px;
+    flex-direction: row;
+    display: flex;
+    padding: 1%;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .sub-left {
+    width: 60%;
+    padding: 1%;
+    
+  } 
+
+  .sub-right {
+    width: 30%;
+    padding: 3%;
+
+  }
+
+  .top-buffer {
+    flex-direction: column-reverse;
+    padding: 1%;
+    display: inline-flex;
+    text-align: center;
+  }
+
+  #info {
+    margin-top: -35px;
+    width: 100%;
+  }
+
+  .leftdiv {
+    width: 100%;
+    margin: 1%;
+  }
+
+  .rightdiv {
+
+    width: 100%;
+    padding: 3%;
+    margin: 1%;
+  }
+
+  footer {
+    padding: 2%;
+  }
+
+  .fa {
+  
+  width: 20%;
+  border-radius: 0;
+  text-decoration: none;
+  }
+
+  .fa-github {
+    background: #000;
+    color: white;
+    margin: 0%;
+  }
+
+  /* Twitter */
+  .fa-linkedin {
+    background: #0073AF;
+    color: white;
+    margin: 1%;
+  }
+
+  #hl {
+  
+    width: 50px;
+  }
+
+  #div-heading {
+    font-size: 23px;
+  }
+
+
+}
+
+

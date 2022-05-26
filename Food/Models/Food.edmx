@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FoodOutput">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Food" Type="nvarchar" MaxLength="255" />
+          <Property Name="Serving" Type="nvarchar" MaxLength="255" />
+          <Property Name="Calories" Type="float" />
+        </EntityType>
+        <EntityType Name="FoodOutputs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Food" Type="nvarchar(max)" />
+          <Property Name="Serving" Type="nvarchar(max)" />
+          <Property Name="Calories" Type="float" />
+        </EntityType>
+        <EntityType Name="FoodTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Food" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Serving" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Calores" Type="int" Nullable="false" />
+          <Property Name="Fooduser" Type="varchar" MaxLength="50" />
+          <Property Name="Fooddata" Type="date" />
+        </EntityType>
+        <EntityType Name="FoodTables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Food" Type="nvarchar(max)" />
+          <Property Name="Serving" Type="nvarchar(max)" />
+          <Property Name="Calores" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodUser">
+          <Key>
+            <PropertyRef Name="userBYid" />
+          </Key>
+          <Property Name="userBYid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Userpwd" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KnowUrBody">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="64" />
+          <Property Name="AgeGroup" Type="varchar" MaxLength="64" />
+          <Property Name="Lifestyle" Type="varchar" MaxLength="64" />
+          <Property Name="BodyType" Type="varchar" MaxLength="64" />
+          <Property Name="Result" Type="varchar(max)" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="LegExercise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Points" Type="varchar" MaxLength="64" />
+          <Property Name="Caluries" Type="varchar" MaxLength="64" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="SquatExercise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Count" Type="int" />
+          <Property Name="Caluries" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="FoodOutput" EntityType="Self.FoodOutput" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodOutputs" EntityType="Self.FoodOutputs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodTable" EntityType="Self.FoodTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodTables" EntityType="Self.FoodTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodUser" EntityType="Self.FoodUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KnowUrBody" EntityType="Self.KnowUrBody" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LegExercise" EntityType="Self.LegExercise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SquatExercise" EntityType="Self.SquatExercise" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FoodTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Food" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Serving" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Calores" Type="Int32" Nullable="false" />
+          <Property Name="Fooduser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fooddata" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="Database1Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FoodTable" EntityType="Self.FoodTable" />
+          <EntitySet Name="FoodUser" EntityType="Database1Model.FoodUser" />
+          <EntitySet Name="FoodOutput" EntityType="Database1Model.FoodOutput" />
+          <EntitySet Name="FoodOutputs" EntityType="Database1Model.FoodOutputs" />
+          <EntitySet Name="FoodTables" EntityType="Database1Model.FoodTables" />
+          <EntitySet Name="LegExercise" EntityType="Database1Model.LegExercise" />
+          <EntitySet Name="SquatExercise" EntityType="Database1Model.SquatExercise" />
+          <EntitySet Name="KnowUrBody" EntityType="Database1Model.KnowUrBody" />
+        </EntityContainer>
+        <EntityType Name="FoodUser">
+          <Key>
+            <PropertyRef Name="userBYid" />
+          </Key>
+          <Property Name="userBYid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Userpwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FoodOutput">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Food" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Serving" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Calories" Type="Double" />
+        </EntityType>
+        <EntityType Name="FoodOutputs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Food" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Serving" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Calories" Type="Double" />
+        </EntityType>
+        <EntityType Name="FoodTables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Food" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Serving" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Calores" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LegExercise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Points" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Caluries" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SquatExercise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="Caluries" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KnowUrBody">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="AgeGroup" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Lifestyle" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="BodyType" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities2">
+          <EntitySetMapping Name="FoodTable">
+            <EntityTypeMapping TypeName="Database1Model.FoodTable">
+              <MappingFragment StoreEntitySet="FoodTable">
+                <ScalarProperty Name="Fooddata" ColumnName="Fooddata" />
+                <ScalarProperty Name="Fooduser" ColumnName="Fooduser" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Food" ColumnName="Food" />
+                <ScalarProperty Name="Serving" ColumnName="Serving" />
+                <ScalarProperty Name="Calores" ColumnName="Calores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodUser">
+            <EntityTypeMapping TypeName="Database1Model.FoodUser">
+              <MappingFragment StoreEntitySet="FoodUser">
+                <ScalarProperty Name="Userpwd" ColumnName="Userpwd" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="userBYid" ColumnName="userBYid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodOutput">
+            <EntityTypeMapping TypeName="Database1Model.FoodOutput">
+              <MappingFragment StoreEntitySet="FoodOutput">
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Serving" ColumnName="Serving" />
+                <ScalarProperty Name="Food" ColumnName="Food" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodOutputs">
+            <EntityTypeMapping TypeName="Database1Model.FoodOutputs">
+              <MappingFragment StoreEntitySet="FoodOutputs">
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+                <ScalarProperty Name="Serving" ColumnName="Serving" />
+                <ScalarProperty Name="Food" ColumnName="Food" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodTables">
+            <EntityTypeMapping TypeName="Database1Model.FoodTables">
+              <MappingFragment StoreEntitySet="FoodTables">
+                <ScalarProperty Name="Calores" ColumnName="Calores" />
+                <ScalarProperty Name="Serving" ColumnName="Serving" />
+                <ScalarProperty Name="Food" ColumnName="Food" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LegExercise">
+            <EntityTypeMapping TypeName="Database1Model.LegExercise">
+              <MappingFragment StoreEntitySet="LegExercise">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Caluries" ColumnName="Caluries" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SquatExercise">
+            <EntityTypeMapping TypeName="Database1Model.SquatExercise">
+              <MappingFragment StoreEntitySet="SquatExercise">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Caluries" ColumnName="Caluries" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KnowUrBody">
+            <EntityTypeMapping TypeName="Database1Model.KnowUrBody">
+              <MappingFragment StoreEntitySet="KnowUrBody">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="BodyType" ColumnName="BodyType" />
+                <ScalarProperty Name="Lifestyle" ColumnName="Lifestyle" />
+                <ScalarProperty Name="AgeGroup" ColumnName="AgeGroup" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
